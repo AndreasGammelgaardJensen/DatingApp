@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import { User } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
-import { userInfo } from 'os';
 
 //The Injectable insures that this component can be injected into other components or services
 @Injectable({
