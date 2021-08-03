@@ -33,7 +33,6 @@ namespace API.Controllers
             var users = await _userRepository.GetMembersAsync();
 
             return Ok(users);  
-
         }
 
         [HttpGet("{username}")]
