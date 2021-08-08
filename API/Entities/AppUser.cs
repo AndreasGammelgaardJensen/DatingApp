@@ -22,6 +22,8 @@ namespace API.Entities
 
         public string Gender {get; set;}
 
+        public string Introduction {get;set;}
+
         public string LookingFor {get; set;}
 
         public string Interest {get; set;}
