@@ -26,16 +26,24 @@ export class MemberEditComponent implements OnInit {
   constructor(private accountService : AccountService, private memberService : MembersService, private toastr: ToastrService) { }
   
   ngOnInit(): void {
-    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
-
-    this.memberService.getMember(this.user.username).subscribe(member => this.member = member);
+    this.loadMember();
 
   }
 
   updateMember() {
-    console.log(this.member);
-    this.toastr.success('Profile updated successfully');
-    this.editForm.reset(this.member);
+    this.memberService.updateMember(this.member).subscribe(()=>{
+      this.toastr.success('Profile updated successfully');
+      this.editForm.reset(this.member);
+
+    });
+    this.loadMember();
+  }
+
+
+  loadMember() {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
+
+    this.memberService.getMember(this.user.username).subscribe(member => this.member = member);
   }
 
 }
